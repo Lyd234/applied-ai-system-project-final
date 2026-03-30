@@ -1,17 +1,26 @@
 # PawPal+ Project Reflection
 
 ## 1. System Design
-
+Add pet information 
+set daily schedule 
+ablity to add/change the schedule
 **a. Initial design**
 
 - Briefly describe your initial UML design.
 - What classes did you include, and what responsibilities did you assign to each?
+I chose four classes owner, pet, task and daily plan. 
+The owner can set availanlitu , preferance an st a schedule.
+Pet holds the pet information and care needs, and includes methods to add tasks needed for the pet
+Task class sets the duration and priority needed for the task
+Dailyplan collects and schedules task for a day, add and removes task
 
 **b. Design changes**
 
 - Did your design change during implementation?
+yes
 - If yes, describe at least one change and why you made it.
-
+There was a get health summary method added by claude which i removed , because it is out of scope for this app and a pet's health can only accurartely be determined by a vet.
+I also removed is valid task method from pet class. It seemed redundent as the user can remove a daily plan using the method under daily plan.
 ---
 
 ## 2. Scheduling Logic and Tradeoffs
