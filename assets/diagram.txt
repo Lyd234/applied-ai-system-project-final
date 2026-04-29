@@ -1,0 +1,45 @@
+PAWPAL+ AI AGENT — SYSTEM DESIGN
+═════════════════════════════════════════════════════════════
+
+  INPUT        Owner · Pets · Tasks  (Streamlit UI)
+                 │
+                 ▼
+  RETRIEVE     get_pending_tasks()
+                 │
+                 ▼
+  GUARDRAIL    validate duration · time format · priority
+               log any issues found
+                 │
+                 ▼
+  GEMINI PLAN  select tasks + one-line reasoning        ◄── AI
+               JSON → selected_tasks[]
+                 │
+                 ▼
+  ACT          enforce time budget      (Python)
+               resolve time conflicts   (Python)
+                 │
+                 ▼
+  GEMINI       write friendly 2-sentence               ◄── AI
+  EXPLAIN      explanation for the owner
+                 │
+                 ▼
+  OUTPUT       ASCII timeline bar chart
+               + plan table + summary
+
+               09:00  ████████████████  Morning walk   30min  [ HIGH ]
+               12:00  ████████          Lunch feed     20min  [ MED  ]
+               19:30  ████              Evening snack  10min  [ LOW  ]
+               ─────────────────────────────────────────────────────
+               60 / 90 min used
+
+                 │
+                 ▼
+  HUMAN        owner marks tasks Done (Streamlit UI)
+               → complete_task() → auto-spawn recurring
+               → re-plan on next Run Agent click
+
+═════════════════════════════════════════════════════════════
+  LOGGING      every step logged with timestamp
+  FALLBACK     if Gemini fails → rule-based planner
+  TESTING      pytest covers all Python scheduling logic
+═════════════════════════════════════════════════════════════
