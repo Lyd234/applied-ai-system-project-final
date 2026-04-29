@@ -1,6 +1,7 @@
 import streamlit as st
 from pawpal_system import Owner, Pet, Task, Scheduler
 from ai_agent import PawPalAgent
+from rag import GuidelineRetriever
 
 st.set_page_config(page_title="PawPal+", page_icon="🐾", layout="centered")
 st.title("🐾 PawPal+")
@@ -88,6 +89,35 @@ if owner.get_all_pets():
     ]
     if rows:
         st.table(rows)
+
+st.divider()
+
+# ── RAG: Suggested Tasks ───────────────────────────────────────────────────────
+if owner.get_all_pets():
+    st.subheader("Suggested Tasks")
+    st.caption("Based on each pet's species and age — from care guidelines.")
+    retriever = GuidelineRetriever()
+
+    for pet in owner.get_all_pets():
+        existing_categories = [t.category for t in pet.get_tasks()]
+        suggestions = retriever.suggest(pet.species, pet.age, pet.care_needs, existing_categories)
+
+        if suggestions:
+            with st.expander(f"{pet.name} — {len(suggestions)} suggestion(s)"):
+                for s_idx, g in enumerate(suggestions):
+                    st.markdown(f"**{g['category'].capitalize()}** · {g['priority']} priority · {g['duration']}min · {g['frequency']}")
+                    st.caption(g["text"])
+                    if st.button("+ Add this task", key=f"rag_{pet.name}_{s_idx}"):
+                        pet.add_task(Task(
+                            title=g["category"].capitalize(),
+                            description=g["text"],
+                            duration_minutes=g["duration"],
+                            priority=g["priority"],
+                            category=g["category"],
+                            frequency=g["frequency"],
+                        ))
+                        st.session_state.result = None
+                        st.rerun()
 
 st.divider()
 

@@ -8,6 +8,7 @@ import google.generativeai as genai
 from dotenv import load_dotenv
 
 from pawpal_system import Owner, Scheduler, Task
+from rag import GuidelineRetriever
 
 load_dotenv()
 
@@ -57,6 +58,7 @@ class PawPalAgent:
         self.owner = owner
         self.scheduler = Scheduler(owner)
         self.gemini = genai.GenerativeModel(MODEL)
+        self.retriever = GuidelineRetriever()
         self.logs: List[Dict] = []
 
     # ── Logging ────────────────────────────────────────────────────────────────
@@ -87,11 +89,24 @@ class PawPalAgent:
             f"- {t.title} | {t.priority} | {t.duration_minutes}min | {t.time}"
             for t in pending
         )
+
+        # RAG: retrieve guidelines for each pet and augment the prompt
+        guideline_blocks = []
+        for pet in self.owner.get_all_pets():
+            guidelines = self.retriever.retrieve(pet.species, pet.age, pet.care_needs)
+            if guidelines:
+                block = f"{pet.name} ({pet.species}, age {pet.age}):\n"
+                block += self.retriever.format_for_prompt(guidelines)
+                guideline_blocks.append(block)
+        guideline_context = "\n\n".join(guideline_blocks) or "No guidelines available."
+        self._log("RETRIEVE", f"RAG: retrieved guidelines for {len(guideline_blocks)} pet(s)")
+
         prompt = (
             f"You are a pet care assistant.\n"
             f"Owner '{self.owner.name}' has {self.owner.available_time} minutes available today.\n\n"
+            f"Care guidelines for their pets:\n{guideline_context}\n\n"
             f"Pending tasks:\n{task_lines}\n\n"
-            f"Pick the best tasks for today. Prefer high-priority. Stay within the time budget.\n"
+            f"Use the guidelines to pick the best tasks for today. Prefer high-priority. Stay within the time budget.\n"
             f'Reply ONLY with JSON: {{"selected_tasks": ["Task A", "Task B"], "reasoning": "one sentence"}}'
         )
         try:

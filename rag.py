@@ -11,8 +11,12 @@ class GuidelineRetriever:
     """
 
     def __init__(self, path: str = "assets/guideline.json"):
-        with open(os.path.join(os.path.dirname(__file__), path), "r") as f:
-            self.guidelines: List[Dict] = json.load(f)
+        full_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), path)
+        with open(full_path, "r", encoding="utf-8") as f:
+            content = f.read()
+        # Skip any non-JSON prefix (e.g. editor-injected text like "Hide JSON")
+        start = next((i for i, c in enumerate(content) if c in "[{"), 0)
+        self.guidelines: List[Dict] = json.loads(content[start:])
 
     # ── Age group mapping ──────────────────────────────────────────────────────
 
