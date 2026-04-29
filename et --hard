@@ -1,0 +1,50 @@
+[33mcommit 9299a582705f17f2addff9ba9a244dee43e68ac7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Lyd234 <lydiabizuneh7@gmail.com>
+Date:   Tue Apr 28 21:25:12 2026 -0700
+
+    added conflict resolver
+
+[1mdiff --git a/assets/diagram.txt b/assets/diagram.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e69de29[m
+[1mdiff --git a/pawpal_system.py b/pawpal_system.py[m
+[1mindex b586c1e..6dbc9de 100644[m
+[1m--- a/pawpal_system.py[m
+[1m+++ b/pawpal_system.py[m
+[36m@@ -278,3 +278,36 @@[m [mclass Scheduler:[m
+         plan = tasks if tasks is not None else self.generate_day_plan()[m
+         total = sum(task.duration_minutes for task in plan)[m
+         return f"Selected {len(plan)} tasks totaling {total} minutes."[m
+[32m+[m[41m[m
+[32m+[m[32m    # ── Step 1: Adapt ─────────────────────────────────────────────────────────[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    def resolve_conflicts(self, tasks: List[Task]) -> List[Task]:[m[41m[m
+[32m+[m[32m        """Keep only the highest-priority task at each conflicting time slot."""[m[41m[m
+[32m+[m[32m        priority_order = {"high": 1, "medium": 2, "low": 3}[m[41m[m
+[32m+[m[32m        time_map: Dict[str, List[Task]] = {}[m[41m[m
+[32m+[m[32m        for task in tasks:[m[41m[m
+[32m+[m[32m            time_map.setdefault(task.time, []).append(task)[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m        resolved: List[Task] = [][m[41m[m
+[32m+[m[32m        for slot_tasks in time_map.values():[m[41m[m
+[32m+[m[32m            if len(slot_tasks) == 1:[m[41m[m
+[32m+[m[32m                resolved.append(slot_tasks[0])[m[41m[m
+[32m+[m[32m            else:[m[41m[m
+[32m+[m[32m                winner = min(slot_tasks, key=lambda t: priority_order.get(t.priority.lower(), 2))[m[41m[m
+[32m+[m[32m                resolved.append(winner)[m[41m[m
+[32m+[m[32m        return resolved[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    # ── Step 2: Full agentic loop ─────────────────────────────────────────────[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m    def run_agent(self, available_minutes: Optional[int] = None) -> Dict:[m[41m[m
+[32m+[m[32m        """Retrieve → Plan → Evaluate → Adapt → Output."""[m[41m[m
+[32m+[m[32m        plan = self.generate_day_plan(available_minutes)[m[41m[m
+[32m+[m[32m        conflicts = self.detect_time_conflicts(plan)[m[41m[m
+[32m+[m[32m        if conflicts:[m[41m[m
+[32m+[m[32m            plan = self.resolve_conflicts(plan)[m[41m[m
+[32m+[m[32m        return {[m[41m[m
+[32m+[m[32m            "plan": self.sort_tasks_by_time(plan),[m[41m[m
+[32m+[m[32m            "explanation": self.explain_plan(plan),[m[41m[m
+[32m+[m[32m            "summary": self.get_schedule_summary(plan),[m[41m[m
+[32m+[m[32m            "conflicts_resolved": conflicts,[m[41m[m
+[32m+[m[32m        }[m[41m[m
