@@ -278,3 +278,36 @@ class Scheduler:
         plan = tasks if tasks is not None else self.generate_day_plan()
         total = sum(task.duration_minutes for task in plan)
         return f"Selected {len(plan)} tasks totaling {total} minutes."
+
+    # ── Step 1: Adapt ─────────────────────────────────────────────────────────
+
+    def resolve_conflicts(self, tasks: List[Task]) -> List[Task]:
+        """Keep only the highest-priority task at each conflicting time slot."""
+        priority_order = {"high": 1, "medium": 2, "low": 3}
+        time_map: Dict[str, List[Task]] = {}
+        for task in tasks:
+            time_map.setdefault(task.time, []).append(task)
+
+        resolved: List[Task] = []
+        for slot_tasks in time_map.values():
+            if len(slot_tasks) == 1:
+                resolved.append(slot_tasks[0])
+            else:
+                winner = min(slot_tasks, key=lambda t: priority_order.get(t.priority.lower(), 2))
+                resolved.append(winner)
+        return resolved
+
+    # ── Step 2: Full agentic loop ─────────────────────────────────────────────
+
+    def run_agent(self, available_minutes: Optional[int] = None) -> Dict:
+        """Retrieve → Plan → Evaluate → Adapt → Output."""
+        plan = self.generate_day_plan(available_minutes)
+        conflicts = self.detect_time_conflicts(plan)
+        if conflicts:
+            plan = self.resolve_conflicts(plan)
+        return {
+            "plan": self.sort_tasks_by_time(plan),
+            "explanation": self.explain_plan(plan),
+            "summary": self.get_schedule_summary(plan),
+            "conflicts_resolved": conflicts,
+        }
