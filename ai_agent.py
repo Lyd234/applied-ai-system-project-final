@@ -5,13 +5,16 @@ from datetime import datetime
 from typing import Dict, List
 
 import google.generativeai as genai
+from dotenv import load_dotenv
 
 from pawpal_system import Owner, Scheduler, Task
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
-MODEL = "gemini-1.5-flash"
+MODEL = "gemini-2.0-flash-lite"
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY", ""))
 
 

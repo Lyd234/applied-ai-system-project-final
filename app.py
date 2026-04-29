@@ -132,6 +132,7 @@ if result:
     scheduler   = st.session_state.scheduler
     any_shown   = False
 
+    idx = 0
     for pet in owner.get_all_pets():
         for task in pet.pending_tasks():
             if task.title in plan_titles:
@@ -140,10 +141,11 @@ if result:
                 with c1:
                     st.write(f"**{task.title}** ({pet.name}) — {task.time}, {task.duration_minutes}min [{task.priority}]")
                 with c2:
-                    if st.button("Done", key=f"done_{pet.name}_{task.title}"):
+                    if st.button("Done", key=f"done_{idx}"):
                         scheduler.complete_task(pet.name, task.title)
                         st.session_state.result = None
                         st.rerun()
+                idx += 1
 
     if not any_shown:
         st.info("All planned tasks complete. Run the agent again to re-plan.")
