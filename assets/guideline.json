@@ -1,0 +1,309 @@
+Hide JSON
+[
+  {
+    "id": "dog-walk-puppy",
+    "species": "dog",
+    "category": "walk",
+    "priority": "high",
+    "duration": 15,
+    "frequency": "daily",
+    "text": "Puppies under 6 months need short walks of 10–15 minutes twice daily. Over-exercise damages developing joints. Keep sessions calm and on-leash."
+  },
+  {
+    "id": "dog-walk-adult",
+    "species": "dog",
+    "category": "walk",
+    "priority": "high",
+    "duration": 45,
+    "frequency": "daily",
+    "text": "Adult dogs (1–7 years) need 30–60 minutes of walking daily. High-energy breeds like border collies, huskies, and labs need 60–90 minutes. Low-energy breeds like bulldogs need 20–30 minutes."
+  },
+  {
+    "id": "dog-walk-senior",
+    "species": "dog",
+    "category": "walk",
+    "priority": "medium",
+    "duration": 20,
+    "frequency": "daily",
+    "text": "Senior dogs (8+ years) should walk no more than 20 minutes at a gentle pace. Watch for limping or lagging — these signal joint pain. Two short walks beat one long one."
+  },
+  {
+    "id": "dog-feed-puppy",
+    "species": "dog",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Puppies under 6 months need three meals per day. Use age-appropriate puppy food. Measure portions — overfeeding causes skeletal problems in large breeds."
+  },
+  {
+    "id": "dog-feed-adult",
+    "species": "dog",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Adult dogs should be fed twice daily at consistent times, morning and evening. Avoid feeding immediately before or after vigorous exercise to reduce bloat risk."
+  },
+  {
+    "id": "dog-feed-senior",
+    "species": "dog",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Senior dogs may need smaller, more frequent meals if digestion slows. Switch to senior-formula food at age 7–8. Monitor weight closely — obesity worsens arthritis."
+  },
+  {
+    "id": "dog-play-adult",
+    "species": "dog",
+    "category": "play",
+    "priority": "medium",
+    "duration": 20,
+    "frequency": "daily",
+    "text": "Dogs need 20–30 minutes of interactive play daily beyond walking. Fetch, tug, and puzzle feeders provide mental stimulation. High-energy breeds need more."
+  },
+  {
+    "id": "dog-groom-short",
+    "species": "dog",
+    "category": "groom",
+    "priority": "low",
+    "duration": 15,
+    "frequency": "weekly",
+    "text": "Short-haired dogs need brushing once a week and bathing every 4–6 weeks. Check ears weekly for redness or odour."
+  },
+  {
+    "id": "dog-groom-long",
+    "species": "dog",
+    "category": "groom",
+    "priority": "medium",
+    "duration": 20,
+    "frequency": "weekly",
+    "text": "Long-haired dogs need brushing 3–4 times per week to prevent matting. Professional grooming every 6–8 weeks is recommended. Daily brushing around ears and legs."
+  },
+  {
+    "id": "dog-meds-general",
+    "species": "dog",
+    "category": "meds",
+    "priority": "high",
+    "duration": 5,
+    "frequency": "daily",
+    "text": "Medication tasks should always be high priority and scheduled at the same time each day. Never skip doses. Log administration time in case of missed dose questions."
+  },
+  {
+    "id": "dog-meds-flea",
+    "species": "dog",
+    "category": "meds",
+    "priority": "medium",
+    "duration": 5,
+    "frequency": "monthly",
+    "text": "Flea and tick prevention should be applied monthly. Note the date applied. Most topical treatments should be kept dry for 24–48 hours after application."
+  },
+  {
+    "id": "dog-health-dental",
+    "species": "dog",
+    "category": "health",
+    "priority": "medium",
+    "duration": 5,
+    "frequency": "daily",
+    "text": "Brush dog teeth daily or at least 3 times per week. Dental disease affects 80% of dogs by age 3. Use dog-specific toothpaste — human toothpaste is toxic."
+  },
+  {
+    "id": "dog-health-nails",
+    "species": "dog",
+    "category": "health",
+    "priority": "low",
+    "duration": 10,
+    "frequency": "weekly",
+    "text": "Trim dog nails every 3–4 weeks. Overgrown nails cause posture problems and pain. If you hear clicking on hard floors, nails are too long."
+  },
+  {
+    "id": "cat-feed-kitten",
+    "species": "cat",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Kittens under 6 months need three to four small meals per day. Use kitten-specific food rich in protein and fat. Free-feeding dry food is acceptable but monitor intake."
+  },
+  {
+    "id": "cat-feed-adult",
+    "species": "cat",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Adult cats should be fed twice daily. Cats are obligate carnivores — ensure high-protein diet. Wet food helps with hydration; cats have low thirst drive."
+  },
+  {
+    "id": "cat-feed-senior",
+    "species": "cat",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Senior cats (11+) may need more frequent smaller meals. Kidney disease is common — increased water intake is critical. Consider prescription food if vet recommends."
+  },
+  {
+    "id": "cat-play-kitten",
+    "species": "cat",
+    "category": "play",
+    "priority": "high",
+    "duration": 20,
+    "frequency": "daily",
+    "text": "Kittens need 3–5 play sessions of 10–15 minutes daily. Play prevents destructive behaviour and supports social development. Wand toys and feather teasers are ideal."
+  },
+  {
+    "id": "cat-play-adult",
+    "species": "cat",
+    "category": "play",
+    "priority": "medium",
+    "duration": 15,
+    "frequency": "daily",
+    "text": "Adult cats need at least two 15-minute interactive play sessions per day. Puzzle feeders and rotating toys maintain mental sharpness. Indoor cats need more stimulation than outdoor cats."
+  },
+  {
+    "id": "cat-groom-short",
+    "species": "cat",
+    "category": "groom",
+    "priority": "low",
+    "duration": 10,
+    "frequency": "weekly",
+    "text": "Short-haired cats are largely self-grooming. Brush once a week to reduce hairballs. Check ears and teeth monthly."
+  },
+  {
+    "id": "cat-groom-long",
+    "species": "cat",
+    "category": "groom",
+    "priority": "medium",
+    "duration": 15,
+    "frequency": "weekly",
+    "text": "Long-haired cats (Persians, Maine Coons) need daily brushing to prevent painful matting. Pay special attention to the belly and armpits. Professional grooming every 6–8 weeks."
+  },
+  {
+    "id": "cat-meds-general",
+    "species": "cat",
+    "category": "meds",
+    "priority": "high",
+    "duration": 5,
+    "frequency": "daily",
+    "text": "Cat medications are high priority. Many cats resist pilling — pill pockets or liquid suspensions help. Always complete the full course. Log time of administration."
+  },
+  {
+    "id": "cat-health-litter",
+    "species": "cat",
+    "category": "health",
+    "priority": "medium",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Scoop litter box at least once daily. Cats avoid dirty boxes and may develop urinary issues. Full litter change weekly. One litter box per cat plus one extra is the standard rule."
+  },
+  {
+    "id": "cat-health-dental",
+    "species": "cat",
+    "category": "health",
+    "priority": "low",
+    "duration": 5,
+    "frequency": "weekly",
+    "text": "Brush cat teeth 2–3 times per week if tolerated. Dental disease is extremely common in cats. Dental treats and water additives help if brushing is not possible."
+  },
+  {
+    "id": "cat-sleep",
+    "species": "cat",
+    "category": "sleep",
+    "priority": "low",
+    "duration": 0,
+    "frequency": "daily",
+    "text": "Cats sleep 12–16 hours per day. Ensure they have quiet, warm resting spots away from high-traffic areas. Senior cats may sleep 20 hours — this is normal."
+  },
+  {
+    "id": "rabbit-feed",
+    "species": "other",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Rabbits need unlimited timothy hay, fresh leafy greens twice daily, and a small amount of pellets. Fresh water always. Hay should make up 80% of their diet."
+  },
+  {
+    "id": "rabbit-play",
+    "species": "other",
+    "category": "play",
+    "priority": "high",
+    "duration": 30,
+    "frequency": "daily",
+    "text": "Rabbits need at least 3 hours of exercise outside their enclosure daily. They are crepuscular — most active at dawn and dusk. Provide tunnels, cardboard boxes, and chew toys."
+  },
+  {
+    "id": "rabbit-groom",
+    "species": "other",
+    "category": "groom",
+    "priority": "medium",
+    "duration": 10,
+    "frequency": "weekly",
+    "text": "Brush rabbits weekly; long-haired breeds daily. Never bathe a rabbit — it causes severe stress and hypothermia. Check nails every 4 weeks."
+  },
+  {
+    "id": "bird-feed",
+    "species": "other",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Pet birds need fresh food twice daily — species-appropriate pellets, fresh fruits, and vegetables. Remove uneaten fresh food within 2 hours. Fresh water daily."
+  },
+  {
+    "id": "bird-play",
+    "species": "other",
+    "category": "play",
+    "priority": "high",
+    "duration": 30,
+    "frequency": "daily",
+    "text": "Birds need at least 2–3 hours outside the cage daily for socialisation and exercise. Rotate toys weekly to prevent boredom. Foraging toys provide critical mental stimulation."
+  },
+  {
+    "id": "guinea-pig-feed",
+    "species": "other",
+    "category": "feed",
+    "priority": "high",
+    "duration": 10,
+    "frequency": "daily",
+    "text": "Guinea pigs need unlimited hay, fresh vegetables twice daily, and a small amount of pellets. Critical: guinea pigs cannot synthesise vitamin C — provide bell peppers or leafy greens daily."
+  },
+  {
+    "id": "guinea-pig-play",
+    "species": "other",
+    "category": "play",
+    "priority": "medium",
+    "duration": 30,
+    "frequency": "daily",
+    "text": "Guinea pigs need floor time outside their cage daily. They are social animals — consider keeping in pairs. Provide tunnels, hiding spots, and gentle human interaction."
+  },
+  {
+    "id": "hamster-feed",
+    "species": "other",
+    "category": "feed",
+    "priority": "high",
+    "duration": 5,
+    "frequency": "daily",
+    "text": "Hamsters eat once daily, preferably in the evening as they are nocturnal. Provide a mix of hamster pellets, fresh vegetables, and occasional protein. Remove uneaten fresh food daily."
+  },
+  {
+    "id": "fish-feed",
+    "species": "other",
+    "category": "feed",
+    "priority": "high",
+    "duration": 5,
+    "frequency": "daily",
+    "text": "Feed fish small amounts once or twice daily — only what they can consume in 2–3 minutes. Overfeeding is the leading cause of poor water quality. Fast fish one day per week."
+  },
+  {
+    "id": "fish-health",
+    "species": "other",
+    "category": "health",
+    "priority": "medium",
+    "duration": 20,
+    "frequency": "weekly",
+    "text": "Perform a 25–30% water change weekly. Test water parameters (ammonia, nitrite, nitrate, pH) weekly. Clean algae from glass and rinse filter media in tank water — never tap water."
+  }
+]
